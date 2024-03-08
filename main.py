@@ -40,6 +40,15 @@ class SortingAlgoriths:
         left = self.merge_sort(numbers[:mid])
         right = self.merge_sort(numbers[mid:])
         return self.merge(left, right)
+
+    # Bubble sort O(n^2)
+    def bubble_sort(self, numbers):
+        for i in range(len(numbers)):
+            for j in range(len(numbers) - 1):
+                if numbers[j] > numbers[j + 1]:
+                    numbers[j] = numbers[j + 1]
+                    numbers[j + 1] = numbers[j]
+        return numbers
             
 if __name__ == "__main__":
     main()
