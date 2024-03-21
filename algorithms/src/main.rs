@@ -10,6 +10,11 @@ fn main() {
 
     SortingAlgorithms::bubble_sort(&mut arr);
     println!("Sorted array: {:?}", arr);
+
+    let a = vec![vec![1, 2], vec![3, 4]];
+    let b = vec![vec![5, 6], vec![7, 8]];
+    let result = MatrixMultiplication::multiply(&a, &b);
+    println!("Matrix multiplication result: {:?}", result);
 }
 
 struct SortingAlgorithms;
@@ -91,5 +96,24 @@ impl SortingAlgorithms {
                 }
             }
         }
+    }
+}
+
+struct MatrixMultiplication;
+
+impl MatrixMultiplication {
+    fn multiply(a: &Vec<Vec<i32>>, b: &Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let n = a.len();
+        let mut result = vec![vec![0; n]; n];
+
+        for i in 0..n {
+            for j in 0..n {
+                for k in 0..n {
+                    result[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+
+        result
     }
 }
