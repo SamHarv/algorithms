@@ -1,7 +1,18 @@
 void main() {
-  List<int> list = [9, 6, 5, 11, 43, 67, 1];
+  List<List<int>> matrixA = [
+    [2, 4, 9],
+    [8, 1, 4],
+    [10, 5, 6]
+  ];
+  List<List<int>> matrixB = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ];
   // List<int> list = [9, 8, 7, 6, 5, 4, 3, 2, 1];
-  print(SortingAlgorithms().bubbleSort(list));
+  List<List<int>> matrixC =
+      MatrixMultiplication().matrixMultiplication(matrixA, matrixB);
+  print(matrixC);
 }
 
 class SortingAlgorithms {
@@ -92,4 +103,70 @@ class MatrixMultiplication {
     }
     return result;
   }
+}
+
+// Stack
+
+// void main() {
+//   final stack = Stack();
+
+//   void reversedList(List list) {
+//     for (final element in list) {
+//       stack.push(element);
+//     }
+//     while (stack.isNotEmpty) {
+//       print(stack.pop());
+//     }
+//   }
+
+// //   reversedList([1, 2, 3, 4, 5]);
+
+//   bool areParenthesesBalanced(String text) {
+//     for (int i = 0; i < text.length; i++) {
+//       final char = text[i];
+//       if (char == '(') {
+//         stack.push(char);
+//       } else if (char == ')') {
+//         if (stack.isEmpty) {
+//           return false;
+//         } else {
+//           stack.pop();
+//         }
+//       }
+//     }
+//     return stack.isEmpty;
+//   }
+
+//   print(areParenthesesBalanced('(Hello)'));
+
+// //   stack.push(1);
+// //   stack.push(2);
+// //   stack.push(3);
+// //   stack.push(4);
+// //   print(stack);
+
+// //   final element = stack.pop();
+// //   print('Popped: $element');
+// }
+
+class Stack<E> {
+  Stack() : _storage = <E>[];
+  final List<E> _storage;
+
+  @override
+  String toString() {
+    return '--- Top ---\n'
+        '${_storage.reversed.join('\n')}'
+        '\n--------------';
+  }
+
+  void push(E element) => _storage.add(element);
+
+  E pop() => _storage.removeLast();
+
+  E get peek => _storage.last;
+
+  bool get isEmpty => _storage.isEmpty;
+
+  bool get isNotEmpty => !isEmpty;
 }
